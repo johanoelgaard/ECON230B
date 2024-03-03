@@ -113,6 +113,7 @@ def plot_lorentz_curve(data, shares=None, title='Lorentz Curve', data_label='Lor
     plt.title(title)
     plt.xlabel('Filers ranked from poorest to richest')
     plt.ylabel('Share of total AGI')
+    plt.tight_layout()
     plt.legend(loc='upper left')
 
     # saving the plot

@@ -5,6 +5,7 @@ import matplotlib.ticker as mticker
 import pandas as pd
 from scipy.interpolate import PchipInterpolator
 
+
 def clean_data(raw,print_head=False):
     """
     Function to clean the raw data and calculate the percentages and cumulative percentages of AGI
@@ -92,13 +93,13 @@ def plot_lorenz_curve(data, shares=None, title='lorenz Curve', data_label='loren
             plt.axvline(share, color='grey', linestyle='dotted')
 
             # write intersection of dotted lines with axis as text at the axis
-            plt.text(share, 0, f'{share*100}%', verticalalignment='bottom', horizontalalignment='right')
+            plt.text(share, 0, f'{share*100}%', verticalalignment='bottom', horizontalalignment='right', fontsize=13)
 
             # adjust text position based on value of 1-y
             if 1-y > 0.8:  # adjust threshold as needed
-                plt.text(0.41, 1-y+0.015, '{:.2f}%'.format((1-y)*100), verticalalignment='center', horizontalalignment='right')
+                plt.text(0.60, 1-y+0.015, '{:.2f}%'.format((1-y)*100), verticalalignment='center', horizontalalignment='right', fontsize=13)
             else:
-                plt.text(0.04, 1-y+0.015, '{:.2f}%'.format((1-y)*100), verticalalignment='center', horizontalalignment='right')
+                plt.text(0.1, 1-y+0.015, '{:.2f}%'.format((1-y)*100), verticalalignment='center', horizontalalignment='right', fontsize=13)
     
     if pchip:
         pchip = PchipInterpolator(data['Cumsum percentage of total returns'], data['Cumsum percentage of total AGI'])
@@ -111,10 +112,12 @@ def plot_lorenz_curve(data, shares=None, title='lorenz Curve', data_label='loren
     plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: '{:.0f}%'.format(x*100)))
     plt.gca().xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: '{:.0f}%'.format(x*100)))
     plt.title(title)
-    plt.xlabel('Filers ranked from poorest to richest')
-    plt.ylabel('Share of total AGI')
+    plt.xlabel('Filers ranked from poorest to richest', fontsize=16)
+    plt.ylabel('Share of total AGI', fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.xticks(fontsize=16)
+    plt.legend(loc='upper left',fontsize=16)
     plt.tight_layout()
-    plt.legend(loc='upper left')
 
     # saving the plot
     if save is not None:

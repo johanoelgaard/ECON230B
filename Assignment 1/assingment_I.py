@@ -50,9 +50,9 @@ def clean_data(raw,print_head=False):
     return data
 
 
-def plot_lorentz_curve(data, shares=None, title='Lorentz Curve', data_label='Lorentz Curve', compare=None, compare_label='Lorentz Curve', pchip=False, save=None):
+def plot_lorenz_curve(data, shares=None, title='lorenz Curve', data_label='lorenz Curve', compare=None, compare_label='lorenz Curve', pchip=False, save=None):
     """
-    Function to plot the lorentz curve
+    Function to plot the lorenz curve
     
     Args:
     data: pandas DataFrame, data to plot
@@ -84,7 +84,7 @@ def plot_lorentz_curve(data, shares=None, title='Lorentz Curve', data_label='Lor
             y = 1-np.interp(share, data['Cumsum percentage of total returns'], data['Cumsum percentage of total AGI'])
             print(f'Interpolated value for top {((1-share)*100):.2f}% share of total AGI:', y)
 
-            # plot interpolated values on the lorentz curve
+            # plot interpolated values on the lorenz curve
             plt.plot(share, 1-y, 'o', label=f'{((1-share)*100):.0f}% share of total AGI')
 
             # create dotted lines from interpolated values axis
@@ -133,9 +133,9 @@ def gini_coefficient(data, print_gini=False):
         Returns:
         gini: float, Gini coefficient"""
 
-        # calculate the area under between the diagonal and the lorentz curve
+        # calculate the area under between the diagonal and the lorenz curve
         area = (np.trapz(np.linspace(0.0,1.0,len(data)), np.linspace(0.0,1.0,len(data))) # area of the triangle
-                - np.trapz(data['Cumsum percentage of total AGI'], data['Cumsum percentage of total returns'])) # area under the lorentz curve
+                - np.trapz(data['Cumsum percentage of total AGI'], data['Cumsum percentage of total returns'])) # area under the lorenz curve
         
         # calculate the Gini coefficient
         gini = area/np.trapz(np.linspace(0.0,1.0,len(data)), np.linspace(0.0,1.0,len(data)))

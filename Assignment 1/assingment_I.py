@@ -121,7 +121,7 @@ def plot_lorentz_curve(data, shares=None, title='Lorentz Curve', data_label='Lor
 
     plt.show()
 
-def gini_coefficient(data, print_gini=True):
+def gini_coefficient(data, print_gini=False):
         """
         Function to calculate the Gini coefficient
         

@@ -1,2 +1,2 @@
 # ECON230B
-UCB ECON 230B Spring 2024
+Repository for computational tasks realted to the Problem Sets in ECON 230B Public Economics Spring 2024 at University of California Berkeley
